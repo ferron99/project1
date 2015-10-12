@@ -1,6 +1,6 @@
 // Project 1, create a simple game were a hero chases gold and a monster chases the hero
 // Nick Ferro
-// CST 112  10-02-2015
+// CST 112  10-12-2015
 
 int state;               //toggle state for sun and moon
 float sx,sy;             //sun position
@@ -12,7 +12,6 @@ float dark;              //mask for night
 float horizon;
 int frame;               //frame count for hero's run animation
 int score;
-
 
 void setup() {
   size( 640,480);
@@ -50,8 +49,8 @@ void draw() {
   displayScore();
   button();
   fill(0);
-  //text( bColor ,50,height-50);
-  //text( abs(manY-goldY) ,50,height-30);
+  text( abs(manX-goldX) ,50,height-50);
+  text( abs(manY-goldY) ,50,height-30);
 }
 
 void reset(){
@@ -160,265 +159,499 @@ void runningMan(){
 }
 
 void drawFrame1(){
- 
+  if (manX < goldX) {
  noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-40,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);                //dark shirt color
  quad(manX+10,manY-8, manX+18,manY-10, manX+25,manY-5, manX+25,manY);  //front arm
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  rect(manX-10,manY-10,25,25);          //bodmanY
  rect(manX-25,manY-15,20,5);           //back upper arm
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-35,manY-5,10,10);           //back hand
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  quad(manX-25,manY-15, manX-20,manY-10, manX-25,manY, manX-30,manY-5); //backforearm
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX+20,manY-5,10,10);           //front hand
- fill(246,150,121);                    //light pants color
+ fill(246,150,121);              //light pants color
  rect(manX-10,manY+15,25,10);          //waist
  quad(manX+15,manY+22, manX+12,manY+25, manX+35,manY+50, manX+40,manY+50); //front leg
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  quad(manX-10,manY+25, manX-5,manY+25, manX-15,manY+40, manX-20,manY+35);  //back upper leg
  rect(manX-35,manY+35, 20,5);          //back shin
- fill(54,47,45);                       //shoe hair color
+ fill(54,47,45);                 //shoe hair color
  rect(manX-40,manY+35,5,15);           //back shoe
  quad(manX+35,manY+50, manX+38,manY+55,  manX+51,manY+49, manX+48,manY+45); //front shoe
  rect(manX-5,manY-40, 25, 5);          //hair top bar
  rect(manX-5,manY-35, 10,5);           //hair mid
  rect(manX-5,manY-30, 5,5);            //hair low
-
+  }else{
+ noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-40,25,30);           //head
+ fill(0,191,243);                //dark shirt color
+ quad(manX-10,manY-8, manX-18,manY-10, manX-25,manY-5, manX-25,manY);  //front arm
+ fill(109,207,246);              //light shirt color
+ rect(manX-10,manY-10,25,25);          //bodmanY
+ rect(manX+10,manY-15,15,5);           //back upper arm
+ fill(233,203,141);              //skin color
+ rect(manX-35,manY-5,10,10);           //back hand
+ fill(109,207,246);              //light shirt color
+ quad(manX+25,manY-15, manX+20,manY-10, manX+25,manY, manX+30,manY-5); //backforearm
+ fill(233,203,141);              //skin color
+ rect(manX+20,manY-5,10,10);           //front hand
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+15,25,10);          //waist
+ quad(manX-10,manY+22, manX-8,manY+25, manX-30,manY+50, manX-35,manY+50); //front leg
+ fill(242,108,79);               //dark pants color
+ quad(manX+15,manY+25, manX+10,manY+25, manX+20,manY+40, manX+25,manY+35);  //back upper leg
+ rect(manX+20,manY+35, 20,5);          //back shin
+ fill(54,47,45);                 //shoe hair color
+ rect(manX+40,manY+35,5,15);           //back shoe
+ quad(manX-30,manY+50, manX-32,manY+55,  manX-46,manY+49, manX-42,manY+45); //front shoe
+ rect(manX-15,manY-40, 25, 5);          //hair top bar
+ rect(manX,manY-35, 10,5);           //hair mid
+ rect(manX+5,manY-30, 5,5);            //hair low
+}
+  
 }
 
 void drawFrame2(){
- 
+if (manX < goldX) {
  noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-35,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);                //dark shirt color
  quad(manX+10,manY-3, manX+18,manY-5, manX+25,manY, manX+25,manY+5);  //front arm
- fill(109,207,246);                   //light shirt color
+ fill(109,207,246);              //light shirt color
  rect(manX-10,manY-5,25,25);          //bodmanY
- rect(manX-25,manY-10,20,5);          //back upper arm
- fill(233,203,141);                   //skin color
- rect(manX-35,manY,10,10);            //back hand
- fill(109,207,246);                   //light shirt color
+ rect(manX-25,manY-10,20,5);           //back upper arm
+ fill(233,203,141);              //skin color
+ rect(manX-35,manY,10,10);           //back hand
+ fill(109,207,246);              //light shirt color
  quad(manX-25,manY-10, manX-20,manY-5, manX-25,manY+5, manX-30,manY); //backforearm
- fill(233,203,141);                  //skin color
+ fill(233,203,141);              //skin color
  rect(manX+20,manY,10,10);           //front hand
- fill(246,150,121);                  //light pants color
- rect(manX-10,manY+20,25,10);        //waist
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+20,25,10);          //waist
  quad(manX+15,manY+27, manX+12,manY+30, manX+20,manY+35, manX+25,manY+35); //front leg upper
  rect(manX+20,manY+35,5,20);           //front leg shin
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  quad(manX-10,manY+30, manX-5,manY+30, manX-15,manY+45, manX-20,manY+40);  //back upper leg
  rect(manX-30,manY+40, 15,5);          //back shin
- fill(54,47,45);                       //shoe hair color
+ fill(54,47,45);                 //shoe hair color
  rect(manX-35,manY+40,5,15);           //back shoe
  rect(manX+20,manY+55,15,5);           //front shoe
  rect(manX-5,manY-35, 25, 5);          //hair top bar
  rect(manX-5,manY-30, 10,5);           //hair mid
- rect(manX-5,manY-25, 5,5);            //hair low 
+ rect(manX-5,manY-25, 5,5);            //hair low
+}else{
+  noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-35,25,30);           //head
+ fill(0,191,243);                //dark shirt color
+ quad(manX-10,manY-3, manX-18,manY-5, manX-25,manY, manX-25,manY+5);  //front arm
+ fill(109,207,246);              //light shirt color
+ rect(manX-10,manY-5,25,25);          //bodmanY
+ rect(manX+10,manY-10,15,5);           //back upper arm
+ fill(233,203,141);              //skin color
+ rect(manX-35,manY,10,10);           //back hand
+ fill(109,207,246);              //light shirt color
+ quad(manX+25,manY-10, manX+20,manY-5, manX+25,manY+5, manX+30,manY); //backforearm
+ fill(233,203,141);              //skin color
+ rect(manX+20,manY,10,10);           //front hand
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+20,25,10);          //waist
+ quad(manX-10,manY+27, manX-8,manY+30, manX-15,manY+35, manX-20,manY+35); //front leg upper
+ rect(manX-20,manY+35,5,20);           //front leg shin
+ fill(242,108,79);               //dark pants color
+ quad(manX+15,manY+30, manX+10,manY+30, manX+20,manY+45, manX+25,manY+40);  //back upper leg
+ rect(manX+20,manY+40, 15,5);          //back shin
+ fill(54,47,45);                 //shoe hair color
+ rect(manX+35,manY+40,5,15);           //back shoe
+ rect(manX-30,manY+55,15,5);           //front shoe
+ rect(manX-15,manY-35, 25, 5);          //hair top bar
+ rect(manX,manY-30, 10,5);           //hair mid
+ rect(manX+5,manY-25, 5,5);            //hair low
+}
+  
   
 }
 
 void drawFrame3(){
-  
+  if (manX < goldX) {
  noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-30,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);                //dark shirt color
  rect(manX+15,manY,5,20);              //front arm
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  rect(manX-10,manY,25,25);             //bodmanY
  rect(manX-20,manY-5,15,10);           //back upper arm
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-20,manY+10,10,10);          //back hand
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  rect(manX-20,manY+5,5,5);             //backforearm
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX+20,manY+10,10,10);          //front hand
- fill(246,150,121);                    //light pants color
+ fill(246,150,121);              //light pants color
  rect(manX-10,manY+25,25,10);          //waist
  quad(manX+15,manY+32, manX+12,manY+35, manX+20,manY+40, manX+25,manY+40);           //front leg upper
  quad(manX+20,manY+40, manX+25,manY+40, manX+14,manY+59, manX+10,manY+55);           //front leg shin
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  quad(manX,manY+35, manX-5,manY+35, manX+3,manY+40, manX+10,manY+40);             //back upper leg
  quad(manX+5,manY+40, manX+10,manY+40, manX-1,manY+59, manX-5,manY+55);        //back shin
- fill(54,47,45);                       //shoe hair color
+ fill(54,47,45);                 //shoe hair color
  quad(manX-5,manY+55, manX,manY+55, manX+5,manY+65, manX,manY+65);           //back shoe
  quad(manX+10,manY+55, manX+15,manY+55, manX+20,manY+65, manX+15,manY+65);           //front shoe
  rect(manX-5,manY-30, 25, 5);          //hair top bar
  rect(manX-5,manY-25, 15,5);           //hair mid
  rect(manX-5,manY-20, 10,5);           //hair low
+  }else{
+  noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-30,25,30);           //head
+ fill(0,191,243);                //dark shirt color
+ rect(manX-15,manY,5,20);              //front arm
+ fill(109,207,246);              //light shirt color
+ rect(manX-10,manY,25,25);             //bodmanY
+ rect(manX+10,manY-5,15,10);           //back upper arm
+ fill(233,203,141);              //skin color
+ rect(manX+15,manY+10,10,10);          //back hand
+ fill(109,207,246);              //light shirt color
+ rect(manX+20,manY+5,5,5);             //backforearm
+ fill(233,203,141);              //skin color
+ rect(manX-25,manY+10,10,10);          //front hand
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+25,25,10);          //waist
+ quad(manX-10,manY+32, manX-7,manY+35, manX-15,manY+40, manX-20,manY+40);           //front leg upper
+ quad(manX-15,manY+40, manX-20,manY+40, manX-9,manY+59, manX-5,manY+55);           //front leg shin
+ fill(242,108,79);               //dark pants color
+ quad(manX+5,manY+35, manX+10,manY+35, manX+2,manY+40, manX-5,manY+40);             //back upper leg
+ quad(manX,manY+40, manX-5,manY+40, manX+6,manY+59, manX+10,manY+55);        //back shin
+ fill(54,47,45);                 //shoe hair color
+ quad(manX+10,manY+55, manX+5,manY+55, manX,manY+65, manX+5,manY+65);           //back shoe
+ quad(manX-5,manY+55, manX-10,manY+55, manX-15,manY+65, manX-10,manY+65);           //front shoe
+ rect(manX-15,manY-30, 25, 5);          //hair top bar
+ rect(manX-5,manY-25, 15,5);           //hair mid
+ rect(manX,manY-20, 10,5);           //hair low
  
+}
 }
 
 void drawFrame4(){
- 
+ if (manX < goldX) {
   noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-35,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);               //dark shirt color
  rect(manX-25,manY-10,20,5);           //back arm upper
  quad(manX-25,manY-10, manX-20,manY-5, manX-25,manY+5, manX-30,manY); //backforearm
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  quad(manX+10,manY-3, manX+18,manY-5, manX+25,manY, manX+25,manY+5);  //front arm
  rect(manX-10,manY-5,25,25);           //bodmanY
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-35,manY,10,10);             //back hand
- fill(109,207,246);                    //light shirt color
- fill(233,203,141);                    //skin color
+ fill(109,207,246);              //light shirt color
+ fill(233,203,141);              //skin color
  rect(manX+20,manY,10,10);             //front hand
- fill(246,150,121);                    //light pants color
+ fill(246,150,121);              //light pants color
  rect(manX-10,manY+20,25,10);          //waist
  quad(manX-10,manY+30, manX-5,manY+30, manX-15,manY+40, manX-20,manY+40);  //back upper leg
  rect(manX-30,manY+35, 15,5);         //back shin
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  rect(manX+5,manY+20,10,5);            //waist front dark portion upper
  rect(manX,manY+25,15,5);              //waist front dark portion lower
  quad(manX+15,manY+27, manX+12,manY+30, manX+20,manY+35, manX+25,manY+35); //front leg upper
  quad(manX+20,manY+35, manX+25,manY+35, manX+14,manY+54, manX+10,manY+50);     //front leg shin
- fill(54,47,45);                       //shoe hair color
+ fill(54,47,45);                 //shoe hair color
  rect(manX-35,manY+35,5,15);           //back shoe
  quad(manX+10,manY+50, manX+15,manY+50, manX+20,manY+60, manX+15,manY+60);   //front shoe
  rect(manX-5,manY-35, 25, 5);          //hair top bar
  rect(manX-5,manY-30, 20,5);           //hair mid
  rect(manX-5,manY-25, 15,5);            //hair low
- 
+  }else{
+ noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-35,25,30);           //head
+ fill(0,191,243);               //dark shirt color
+ rect(manX+10,manY-10,15,5);           //back arm upper
+ quad(manX+25,manY-10, manX+20,manY-5, manX+25,manY+5, manX+30,manY); //backforearm
+ fill(109,207,246);              //light shirt color
+ quad(manX-10,manY-3, manX-18,manY-5, manX-25,manY, manX-25,manY+5);  //front arm
+ rect(manX-10,manY-5,25,25);           //bodmanY
+ fill(233,203,141);              //skin color
+ rect(manX-35,manY,10,10);             //back hand
+ fill(109,207,246);              //light shirt color
+ fill(233,203,141);              //skin color
+ rect(manX+20,manY,10,10);             //front hand
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+20,25,10);          //waist
+ quad(manX+15,manY+30, manX+10,manY+30, manX+20,manY+40, manX+25,manY+40);  //back upper leg
+ rect(manX+20,manY+35, 15,5);         //back shin
+ fill(242,108,79);               //dark pants color
+ rect(manX-10,manY+20,10,5);            //waist front dark portion upper
+ rect(manX-10,manY+25,15,5);              //waist front dark portion lower
+ quad(manX-10,manY+27, manX-7,manY+30, manX-15,manY+35, manX-20,manY+35); //front leg upper
+ quad(manX-15,manY+35, manX-20,manY+35, manX-9,manY+54, manX-5,manY+50);     //front leg shin
+ fill(54,47,45);                 //shoe hair color
+ rect(manX+30,manY+35,5,15);           //back shoe
+ quad(manX-5,manY+50, manX-10,manY+50, manX-15,manY+60, manX-10,manY+60);   //front shoe
+ rect(manX-15,manY-35, 25, 5);          //hair top bar
+ rect(manX-10,manY-30, 20,5);           //hair mid
+ rect(manX-5,manY-25, 15,5);            //hair low
+}
 }
 
 void drawFrame5(){
-
+  if (manX < goldX) {
  noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-40,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);                //dark shirt color
  rect(manX-25,manY-15,20,5);           //back upper arm
  quad(manX-25,manY-15, manX-20,manY-10, manX-25,manY, manX-30,manY-5); //backforearm
-  fill(233,203,141);                   //skin color
+  fill(233,203,141);              //skin color
  rect(manX+20,manY-5,10,10);           //front hand
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  quad(manX+10,manY-8, manX+18,manY-10, manX+29,manY+5, manX+21,manY+5);  //front arm
  rect(manX-10,manY-10,25,25);          //bodmanY
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-35,manY-5,10,10);           //back hand
- fill(246,150,121);                    //light pants color
+ fill(246,150,121);              //light pants color
  rect(manX-10,manY+15,25,10);          //waist
  quad(manX-10,manY+25, manX-5,manY+25, manX-15,manY+40, manX-20,manY+35);  //back upper leg
  rect(manX-35,manY+35, 20,5);          //back shin
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  rect(manX+5,manY+15,10,5);
  rect(manX,manY+20,15,5);
  quad(manX+15,manY+22, manX+12,manY+25, manX+35,manY+50, manX+40,manY+50); //front leg
- fill(54,47,45);                       //shoe hair color
+ fill(54,47,45);                 //shoe hair color
  rect(manX-40,manY+35,5,15);           //back shoe
  quad(manX+35,manY+50, manX+38,manY+55,  manX+51,manY+49, manX+48,manY+45); //front shoe
  rect(manX-5,manY-40, 25, 5);          //hair top bar
  rect(manX-5,manY-35, 20,5);           //hair mid
  rect(manX-5,manY-30, 15,5);            //hair low 
-  
+    }else{
+ noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-40,25,30);           //head
+ fill(0,191,243);                //dark shirt color
+ rect(manX+10,manY-15,15,5);           //back upper arm
+ quad(manX+25,manY-15, manX+20,manY-10, manX+25,manY, manX+30,manY-5); //backforearm
+  fill(233,203,141);              //skin color
+ rect(manX+20,manY-5,10,10);           //front hand
+ fill(109,207,246);              //light shirt color
+ quad(manX-10,manY-8, manX-18,manY-10, manX-29,manY+5, manX-21,manY+5);  //front arm
+ rect(manX-10,manY-10,25,25);          //bodmanY
+ fill(233,203,141);              //skin color
+ rect(manX-35,manY-5,10,10);           //back hand
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+15,25,10);          //waist
+ quad(manX+15,manY+25, manX+10,manY+25, manX+20,manY+40, manX+25,manY+35);  //back upper leg
+ rect(manX+20,manY+35, 20,5);          //back shin
+ fill(242,108,79);               //dark pants color
+ rect(manX-10,manY+15,10,5);            //dark waist portion upper
+ rect(manX-10,manY+20,15,5);              //dark waist portion lower
+ quad(manX-10,manY+22, manX-7,manY+25, manX-30,manY+50, manX-40,manY+50); //front leg
+ fill(54,47,45);                 //shoe hair color
+ rect(manX+40,manY+35,5,15);           //back shoe
+ quad(manX-30,manY+50, manX-33,manY+55,  manX-46,manY+49, manX-43,manY+45); //front shoe
+ rect(manX-15,manY-40, 25, 5);          //hair top bar
+ rect(manX-10,manY-35, 20,5);           //hair mid
+ rect(manX-5,manY-30, 15,5);            //hair low
+}
 }
 
 void drawFrame6(){
- 
+ if (manX < goldX) {
  noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-35,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);                //dark shirt color
  quad(manX-25,manY-10, manX-20,manY-5, manX-25,manY+5, manX-30,manY); //backforearm
  rect(manX-25,manY-10,20,5);           //back upper arm
- fill(233,203,141);                    //skin color
- rect(manX+20,manY,10,10);             //front hand
- fill(109,207,246);                    //light shirt color
+ fill(233,203,141);              //skin color
+ rect(manX+20,manY,10,10);           //front hand
+ fill(109,207,246);              //light shirt color
  rect(manX-10,manY-5,25,25);          //bodmanY
  quad(manX+10,manY-3, manX+18,manY-5, manX+30,manY+10, manX+23,manY+10);  //front arm
- fill(233,203,141);                  //skin color
+ fill(233,203,141);              //skin color
  rect(manX-35,manY,10,10);           //back hand
- fill(246,150,121);                  //light pants color
+ fill(246,150,121);              //light pants color
  quad(manX-10,manY+30, manX-5,manY+30, manX-15,manY+45, manX-20,manY+40);  //back upper leg
  rect(manX-30,manY+40, 15,5);          //back shin
  rect(manX-10,manY+20,25,10);          //waist
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  rect(manX+5,manY+20,10,5);
  rect(manX,manY+25,15,5);
  quad(manX+15,manY+27, manX+12,manY+30, manX+20,manY+35, manX+25,manY+35); //front leg upper
  rect(manX+20,manY+35,5,20);           //front leg shin
- fill(54,47,45);                       //shoe hair color
+ fill(54,47,45);                 //shoe hair color
  rect(manX-35,manY+40,5,15);           //back shoe
  rect(manX+20,manY+55,15,5);           //front shoe
  rect(manX-5,manY-35, 25, 5);          //hair top bar
  rect(manX-5,manY-30, 20,5);           //hair mid
  rect(manX-5,manY-25, 15,5);            //hair low
-  
+   }else{
+     noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-35,25,30);           //head
+ fill(0,191,243);                //dark shirt color
+ quad(manX+25,manY-10, manX+20,manY-5, manX+25,manY+5, manX+30,manY); //backforearm
+ rect(manX+10,manY-10,15,5);           //back upper arm
+ fill(233,203,141);              //skin color
+ rect(manX+20,manY,10,10);           //front hand
+ fill(109,207,246);              //light shirt color
+ rect(manX-10,manY-5,25,25);          //bodmanY
+ quad(manX-10,manY-3, manX-18,manY-5, manX-30,manY+10, manX-23,manY+10);  //front arm
+ fill(233,203,141);              //skin color
+ rect(manX-35,manY,10,10);           //back hand
+ fill(246,150,121);              //light pants color
+ quad(manX+15,manY+30, manX+10,manY+30, manX+20,manY+45, manX+25,manY+40);  //back upper leg
+ rect(manX+20,manY+40, 15,5);          //back shin
+ rect(manX-10,manY+20,25,10);          //waist
+ fill(242,108,79);               //dark pants color
+ rect(manX-10,manY+20,10,5);
+ rect(manX-10,manY+25,15,5);
+ quad(manX-10,manY+27, manX-7,manY+30, manX-15,manY+35, manX-20,manY+35); //front leg upper
+ rect(manX-20,manY+35,5,20);           //front leg shin
+ fill(54,47,45);                 //shoe hair color
+ rect(manX+35,manY+40,5,15);           //back shoe
+ rect(manX-30,manY+55,15,5);           //front shoe
+ rect(manX-15,manY-35, 25, 5);          //hair top bar
+ rect(manX-10,manY-30, 20,5);           //hair mid
+ rect(manX-5,manY-25, 15,5);            //hair low
+   }
 }
 
 void drawFrame7(){
-
+if (manX < goldX) {
  noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-30,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);                //dark shirt color
  rect(manX-20,manY+5,5,5);             //backforearm
  rect(manX-20,manY-5,15,10);           //back upper arm
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  rect(manX+15,manY,5,20);              //front arm
  rect(manX-10,manY,25,25);             //bodmanY
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-20,manY+10,10,10);          //back hand
- fill(109,207,246);                    //light shirt color
- fill(233,203,141);                    //skin color
+ fill(109,207,246);              //light shirt color
+ fill(233,203,141);              //skin color
  rect(manX+20,manY+10,10,10);          //front hand
- fill(246,150,121);                    //light pants color
+ fill(246,150,121);              //light pants color
  rect(manX-10,manY+25,25,10);          //waist
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  rect(manX+5,manY+25,10,5);
  rect(manX,manY+30,15,5);
  quad(manX+15,manY+32, manX+12,manY+35, manX+20,manY+40, manX+25,manY+40);           //front leg upper
  quad(manX+20,manY+40, manX+25,manY+40, manX+14,manY+59, manX+10,manY+55);           //front leg shin
- fill(246,150,121);                    //light pants color
+ fill(246,150,121);              //light pants color
  quad(manX,manY+35, manX-5,manY+35, manX+3,manY+40, manX+10,manY+40);             //back upper leg
  quad(manX+5,manY+40, manX+10,manY+40, manX-1,manY+59, manX-5,manY+55);        //back shin
- fill(54,47,45);                       //shoe hair color
+ fill(54,47,45);                 //shoe hair color
  quad(manX-5,manY+55, manX,manY+55, manX+5,manY+65, manX,manY+65);           //back shoe
  quad(manX+10,manY+55, manX+15,manY+55, manX+20,manY+65, manX+15,manY+65);           //front shoe
  rect(manX-5,manY-30, 25, 5);          //hair top bar
  rect(manX-5,manY-25, 15,5);           //hair mid
  rect(manX-5,manY-20, 10,5);           //hair low
-  
+   }else{
+ noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-30,25,30);           //head
+ fill(0,191,243);                //dark shirt color
+ rect(manX+20,manY+5,5,5);             //backforearm
+ rect(manX+10,manY-5,15,10);           //back upper arm
+ fill(109,207,246);              //light shirt color
+ rect(manX-15,manY,5,20);              //front arm
+ rect(manX-10,manY,25,25);             //bodmanY
+ fill(233,203,141);              //skin color
+ rect(manX-25,manY+10,10,10);          //back hand
+ fill(109,207,246);              //light shirt color
+ fill(233,203,141);              //skin color
+ rect(manX+15,manY+10,10,10);          //front hand
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+25,25,10);          //waist
+ fill(242,108,79);               //dark pants color
+ rect(manX-10,manY+25,10,5);
+ rect(manX-10,manY+30,15,5);
+ quad(manX-10,manY+32, manX-7,manY+35, manX-15,manY+40, manX-20,manY+40);          
+ quad(manX-15,manY+40, manX-20,manY+40, manX-9,manY+59, manX-5,manY+55);   
+ fill(246,150,121);              //light pants color
+ quad(manX+5,manY+35, manX+10,manY+35, manX+2,manY+40, manX-5,manY+40);          
+ quad(manX,manY+40, manX-5,manY+40, manX+6,manY+59, manX+10,manY+55);        
+ fill(54,47,45);                 //shoe hair color
+ quad(manX+10,manY+55, manX+5,manY+55, manX,manY+65, manX+5,manY+65);           //back shoe
+ quad(manX-5,manY+55, manX-10,manY+55, manX-15,manY+65, manX-10,manY+65);         //front shoe
+ rect(manX-15,manY-30, 25, 5);          //hair top bar
+ rect(manX-5,manY-25, 15,5);           //hair mid
+ rect(manX,manY-20, 10,5);           //hair low
+}
 }
 
 void drawFrame8(){
- 
+if (manX < goldX) {
  noStroke();
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-5,manY-35,25,30);           //head
- fill(0,191,243);                      //dark shirt color
+ fill(0,191,243);               //dark shirt color
  quad(manX+10,manY-3, manX+18,manY-5, manX+25,manY, manX+25,manY+5);  //front arm
- fill(109,207,246);                    //light shirt color
+ fill(109,207,246);              //light shirt color
  rect(manX-25,manY-10,20,5);           //back arm upper
  quad(manX-25,manY-10, manX-20,manY-5, manX-25,manY+5, manX-30,manY); //backforearm
  rect(manX-10,manY-5,25,25);           //bodmanY
- fill(233,203,141);                    //skin color
+ fill(233,203,141);              //skin color
  rect(manX-35,manY,10,10);             //back hand
- fill(109,207,246);                    //light shirt color
- fill(233,203,141);                    //skin color
+ fill(109,207,246);              //light shirt color
+ fill(233,203,141);              //skin color
  rect(manX+20,manY,10,10);             //front hand
- fill(246,150,121);                    //light pants color
+ fill(246,150,121);              //light pants color
  rect(manX-10,manY+20,25,10);          //waist
  quad(manX+15,manY+27, manX+12,manY+30, manX+20,manY+35, manX+25,manY+35); //front leg upper
  quad(manX+20,manY+35, manX+25,manY+35, manX+14,manY+54, manX+10,manY+50);     //front leg shin
- fill(242,108,79);                     //dark pants color
+ fill(242,108,79);               //dark pants color
  quad(manX-10,manY+30, manX-5,manY+30, manX-15,manY+40, manX-20,manY+40);  //back upper leg
- rect(manX-30,manY+35, 15,5);          //back shin
- fill(54,47,45);                       //shoe hair color
+ rect(manX-30,manY+35, 15,5);         //back shin
+ fill(54,47,45);                 //shoe hair color
  rect(manX-35,manY+35,5,15);           //back shoe
  quad(manX+10,manY+50, manX+15,manY+50, manX+20,manY+60, manX+15,manY+60);   //front shoe
  rect(manX-5,manY-35, 25, 5);          //hair top bar
  rect(manX-5,manY-30, 10,5);           //hair mid
  rect(manX-5,manY-25, 5,5);            //hair low
-  
+   }else{
+ noStroke();
+ fill(233,203,141);              //skin color
+ rect(manX-15,manY-35,25,30);           //head
+ fill(0,191,243);               //dark shirt color
+ quad(manX-10,manY-3, manX-18,manY-5, manX-25,manY, manX-25,manY+5);  //front arm
+ fill(109,207,246);              //light shirt color
+ rect(manX+10,manY-10,15,5);           //back arm upper
+ quad(manX+25,manY-10, manX+20,manY-5, manX+25,manY+5, manX+30,manY); //backforearm
+ rect(manX-10,manY-5,25,25);           //bodmanY
+ fill(233,203,141);              //skin color
+ rect(manX-35,manY,10,10);             //back hand
+ fill(109,207,246);              //light shirt color
+ fill(233,203,141);              //skin color
+ rect(manX+20,manY,10,10);             //front hand
+ fill(246,150,121);              //light pants color
+ rect(manX-10,manY+20,25,10);          //waist
+ quad(manX-10,manY+27, manX-7,manY+30, manX-15,manY+35, manX-20,manY+35); //front leg upper
+ quad(manX-15,manY+35, manX-20,manY+35, manX-9,manY+54, manX-5,manY+50);  
+ fill(242,108,79);               //dark pants color
+ quad(manX+15,manY+30, manX+10,manY+30, manX+20,manY+40, manX+25,manY+40);  //back upper leg
+ rect(manX+20,manY+35, 15,5);         //back shin
+ fill(54,47,45);                 //shoe hair color
+ rect(manX+35,manY+35,5,15);           //back shoe
+ quad(manX-5,manY+50, manX-10,manY+50, manX-15,manY+60, manX-10,manY+60);   //front shoe
+ rect(manX-15,manY-35, 25, 5);          //hair top bar
+ rect(manX,manY-30, 10,5);           //hair mid
+ rect(manX+5,manY-25, 5,5);            //hair low
+   }
 }
+
 
 void monsterStuff(){
   fill(250,100,100);
@@ -462,8 +695,8 @@ void displayScore(){
   text(score, width-45, 20);
 }
 
-void buttonBasic(float fill){
-  fill(fill);
+void button(){
+  fill(0);
   strokeWeight(4);
   stroke(255);
   rect(width-88, 33, 83,30);
@@ -471,19 +704,10 @@ void buttonBasic(float fill){
   text("Reset", width-65, 50);
 }
 
-void button(){
-  buttonBasic(0);
-  if (mouseX >width-88 && mouseX<width-5 && mouseY>33 && mouseY<63){
-     buttonBasic(100);
-  }
- }
-
-
 void mousePressed() {
   if (mouseX >width-88 && mouseX<width-5 && mouseY>33 && mouseY<63){
     reset();
     score= score -50;
-    buttonBasic(200);
   }
 }
 
