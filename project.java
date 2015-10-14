@@ -13,6 +13,7 @@ float horizon;
 int frame;               //frame count for hero's run animation
 int score;
 int mode;                // gamemode or start screen
+int eyeKill;             //trigger var for getting rid of monster in win state
 
 void setup() {
   size( 640,480);
@@ -28,8 +29,9 @@ void setup() {
   state = 0;
   dark = 110;
   frame = 0;
-  score = 0;
+  score = 450;
   mode = 0;
+  eyeKill = 0;
   reset();
 }
 
@@ -60,7 +62,7 @@ void startScreen(){
   text("Help the man get the gold. Prevent the monster from catching the man.",(width/2)-200,(height/2)-50);
   text("If the man gets the gold, you earn 50 points. If the monster catches the",(width/2)-200,(height/2)-25);
   text("man, you lose 100 points. Hitting the reset button puts the man in the",(width/2)-200,(height/2));
-  text("house at the cost of 50 points. Press Q to quit.",(width/2)-200,(height/2)+25);
+  text("house at the cost of 50 points.",(width/2)-200,(height/2)+25);
   text("Hit the button below to start.",(width/2)-200,(height/2)+50);
   fill(0);
   strokeWeight(4);
@@ -81,7 +83,9 @@ void gameMode(){
   drawTrees();
   drawGold(goldX,goldY);
   heroStuff();
+  if (eyeKill == 0){
   monsterStuff();
+  }
   drawHouse(250,50);
   drawNight();
   interactions();
@@ -736,7 +740,7 @@ void interactions(){
     manY= 70;
     score = score + 50;
   }
-  if (abs(eyeX-manX)<10 && abs(eyeY-manY)<10){
+  if (abs(eyeX-manX)<8 && abs(eyeY-manY)<8){
     score = score - 100;
     goldX = random(width/4, width*3/4);
     goldY = random(height/3.2, height*3/4);
@@ -755,6 +759,12 @@ void displayScore(){
   textSize(12);
   text("Score",width-85,20);
   text(score, width-45, 20);
+  if(score>=500){
+    textSize(100);
+    fill(255,215,0);
+    text("YOU WIN", (width/2)-200, height/2);
+    eyeKill = 1;
+  }
 }
 
 void button(){
@@ -763,6 +773,7 @@ void button(){
   stroke(255);
   rect(width-88, 33, 83,30);
   fill(255);
+  textSize(12);
   text("Reset", width-65, 50);
 }
 
