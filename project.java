@@ -60,7 +60,7 @@ void startScreen(){
   text("Help the man get the gold. Prevent the monster from catching the man.",(width/2)-200,(height/2)-50);
   text("If the man gets the gold, you earn 50 points. If the monster catches the",(width/2)-200,(height/2)-25);
   text("man, you lose 100 points. Hitting the reset button puts the man in the",(width/2)-200,(height/2));
-  text("house at the cost of 50 points.",(width/2)-200,(height/2)+25);
+  text("house at the cost of 50 points. Press Q to quit.",(width/2)-200,(height/2)+25);
   text("Hit the button below to start.",(width/2)-200,(height/2)+50);
   fill(0);
   strokeWeight(4);
