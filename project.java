@@ -29,7 +29,7 @@ void setup() {
   state = 0;
   dark = 110;
   frame = 0;
-  score = 450;
+  score = 0;
   mode = 0;
   eyeKill = 0;
   reset();
