@@ -1,13 +1,13 @@
 // Project 1, create a simple game were a hero chases gold and a monster chases the hero
 // Nick Ferro
-// CST 112  10-12-2015
+// CST 112  10-14-2015
 
 int state;               //toggle state for sun and moon
 float sx,sy;             //sun position
 float mx,my;             //moon position
 float goldX, goldY;      //gold position
 float manX, manY;        //hero's position
-float trollX, trollY;    //monster's position
+float eyeX, eyeY;    //monster's position
 float dark;              //mask for night
 float horizon;
 int frame;               //frame count for hero's run animation
@@ -22,8 +22,8 @@ void setup() {
   goldY = random(height/3.2, height*3/4);
   manX= 260;
   manY= 70;
-  trollX= 0;
-  trollY= random(height/4,height);
+  eyeX= 0;
+  eyeY= random(height/4,height);
   state = 0;
   dark = 110;
   frame = 0;
@@ -49,15 +49,15 @@ void draw() {
   displayScore();
   button();
   fill(0);
-  text( abs(manX-goldX) ,50,height-50);
-  text( abs(manY-goldY) ,50,height-30);
+  //text( abs(manX-goldX) ,50,height-50);
+  //text( abs(manY-goldY) ,50,height-30);
 }
 
 void reset(){
   goldX = random(width/4, width*3/4);
   goldY = random(height/3.2, height*3/4);
-  trollX= 0;
-  trollY= random(height/4,height);
+  eyeX= 0;
+  eyeY= random(height/4,height);
   manX= 260;
   manY= 70;
 }
@@ -113,6 +113,7 @@ void drawTree(float treeX, float treeY){
 }
 
 void  drawHouse(float x, float y){
+  noStroke();
   fill(175);                                        
   rect(x,y,150,100);
   fill(150);
@@ -654,12 +655,45 @@ if (manX < goldX) {
 
 
 void monsterStuff(){
-  fill(250,100,100);
-  rect(trollX-10,trollY-20,20,40);
-  float dx = manX - trollX;
-  trollX += dx * 0.035;
-  float dy = manY - trollY;
-  trollY += dy * 0.035;
+  if (eyeX<manX){
+  strokeWeight(1);
+  stroke(0);
+  fill(255);
+  ellipse(eyeX,eyeY, 40, 40);
+  fill(255,0,0);
+  ellipse(eyeX+15,eyeY,10,20);
+  fill(0);
+  ellipse(eyeX+17,eyeY,5,10);
+  stroke(255,0,0);
+  line(eyeX-19,eyeY,eyeX-9,eyeY-2);          //middle line
+  line(eyeX-9,eyeY-2,eyeX,eyeY+2);            //middle line
+  line(eyeX,eyeY+2,eyeX+9,eyeY-2);           //middle line
+  line(eyeX-17,eyeY-9,eyeX-2,eyeY-16);       //top line
+  line(eyeX-2,eyeY-16,eyeX+10,eyeY-10);         //top line
+  line(eyeX-17,eyeY+8,eyeX-1,eyeY+13);       //bottom line
+  line(eyeX-1,eyeY+13,eyeX+11,eyeY+11);       //bottom line
+  }else{
+  strokeWeight(1);
+  stroke(0);
+  fill(255);
+  ellipse(eyeX,eyeY, 40, 40);
+  fill(255,0,0);
+  ellipse(eyeX-15,eyeY,10,20);
+  fill(0);
+  ellipse(eyeX-17,eyeY,5,10);
+  stroke(255,0,0);
+  line(eyeX+19,eyeY,eyeX+9,eyeY-2);          //middle line
+  line(eyeX+9,eyeY-2,eyeX,eyeY+2);            //middle line
+  line(eyeX,eyeY+2,eyeX-9,eyeY-2);           //middle line
+  line(eyeX+17,eyeY-9,eyeX+2,eyeY-16);       //top line
+  line(eyeX+2,eyeY-16,eyeX-10,eyeY-10);         //top line
+  line(eyeX+17,eyeY+8,eyeX-1,eyeY+13);       //bottom line
+  line(eyeX+1,eyeY+13,eyeX-11,eyeY+11);       //bottom line
+  }  
+  float dx = manX - eyeX;
+  eyeX += dx * 0.035;
+  float dy = manY - eyeY;
+  eyeY += dy * 0.035;
 }
 void drawNight(){
   noStroke();          
@@ -675,12 +709,12 @@ void interactions(){
     manY= 70;
     score = score + 50;
   }
-  if (abs(trollX-manX)<10 && abs(trollY-manY)<10){
+  if (abs(eyeX-manX)<10 && abs(eyeY-manY)<10){
     score = score - 100;
     goldX = random(width/4, width*3/4);
     goldY = random(height/3.2, height*3/4);
-    trollX= 0;
-    trollY= random(height/4,height);
+    eyeX= 0;
+    eyeY= random(height/4,height);
     manX= width;
     manY= random(height/4,height);
       
