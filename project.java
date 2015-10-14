@@ -12,6 +12,7 @@ float dark;              //mask for night
 float horizon;
 int frame;               //frame count for hero's run animation
 int score;
+int mode;                // gamemode or start screen
 
 void setup() {
   size( 640,480);
@@ -28,10 +29,48 @@ void setup() {
   dark = 110;
   frame = 0;
   score = 0;
+  mode = 0;
   reset();
 }
 
 void draw() {
+  
+   if (mode == 0){
+   startScreen();
+  }
+  if (mode == 1){
+   gameMode();
+  } 
+}
+
+void reset(){
+  goldX = random(width/4, width*3/4);
+  goldY = random(height/3.2, height*3/4);
+  eyeX= 0;
+  eyeY= random(height/4,height);
+  manX= 260;
+  manY= 70;
+}
+
+void startScreen(){
+  fill(0);
+  textSize(32);
+  text("Project 1 Game",(width/2)-100,(height/2)-100);
+  textSize(14);
+  text("Help the man get the gold. Prevent the monster from catching the man.",(width/2)-200,(height/2)-50);
+  text("If the man gets the gold, you earn 50 points. If the monster catches the",(width/2)-200,(height/2)-25);
+  text("man, you lose 100 points. Hitting the reset button puts the man in the",(width/2)-200,(height/2));
+  text("house at the cost of 50 points.",(width/2)-200,(height/2)+25);
+  text("Hit the button below to start.",(width/2)-200,(height/2)+50);
+  fill(0);
+  strokeWeight(4);
+  stroke(255);
+  rect((width/2)-50,(height/2)+100, 83,30);
+  fill(255);
+  text("Start", (width/2)-40,(height/2)+120);
+}
+
+void gameMode(){
    drawMiscScenery();
    if (state == 0){
     drawSun();
@@ -48,18 +87,6 @@ void draw() {
   interactions();
   displayScore();
   button();
-  fill(0);
-  //text( abs(manX-goldX) ,50,height-50);
-  //text( abs(manY-goldY) ,50,height-30);
-}
-
-void reset(){
-  goldX = random(width/4, width*3/4);
-  goldY = random(height/3.2, height*3/4);
-  eyeX= 0;
-  eyeY= random(height/4,height);
-  manX= 260;
-  manY= 70;
 }
 
 void drawSun(){
@@ -725,6 +752,7 @@ void displayScore(){
   fill(0);
   rect(width-88,8,83,17);
   fill(255);
+  textSize(12);
   text("Score",width-85,20);
   text(score, width-45, 20);
 }
@@ -739,9 +767,16 @@ void button(){
 }
 
 void mousePressed() {
-  if (mouseX >width-88 && mouseX<width-5 && mouseY>33 && mouseY<63){
+  if (mode == 0){
+    if (mouseX >(width/2)-50 && mouseX<(width/2)+33 && mouseY>(height/2)+100 && mouseY<(height/2)+130){
+      mode = 1;
+    }
+  }
+  if (mode == 1){
+    if (mouseX >width-88 && mouseX<width-5 && mouseY>33 && mouseY<63){
     reset();
     score= score -50;
+    }
   }
 }
 
